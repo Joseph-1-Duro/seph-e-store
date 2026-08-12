@@ -1,0 +1,17 @@
+// Navbar — site navigation.
+// Component: src/ui/components/Navbar.tsx
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+  height: $header-height;
+  padding-inline: $space-5;
+
+  @include respond-to("md") {
+    padding-inline: $space-6;
+  }
+}

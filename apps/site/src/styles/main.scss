@@ -1,0 +1,22 @@
+// Main stylesheet — import order: abstracts → base → layout → components → pages.
+
+// Abstracts (no output)
+@use "abstracts/variables";
+@use "abstracts/mixins";
+
+// Base
+@use "base/reset";
+@use "base/typography";
+@use "base/globals";
+
+// Layout
+@use "layout/header";
+@use "layout/footer";
+
+// Components
+@use "components/announcement-bar";
+@use "components/navbar";
+@use "components/scroll-to-top";
+
+// Pages
+@use "pages/home";

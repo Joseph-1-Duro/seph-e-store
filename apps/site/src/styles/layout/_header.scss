@@ -1,0 +1,11 @@
+// Site header — brand + navbar row, sticky on top.
+// Component: src/ui/layout/Header.tsx
+@use "../abstracts/variables" as *;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: $color-white;
+  border-bottom: 1px solid $color-gray-200;
+}
