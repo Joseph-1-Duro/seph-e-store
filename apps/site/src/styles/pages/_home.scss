@@ -1,0 +1,150 @@
+// Home page — placeholder scaffold (migrated from page.module.css).
+// Component: src/app/page.tsx
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.home {
+  --background: #{$color-gray-50};
+  --foreground: #{$color-white};
+
+  --text-primary: #{$color-black};
+  --text-secondary: #{$color-gray-500};
+
+  --button-primary-hover: #{$color-gray-700};
+  --button-secondary-hover: #{$color-gray-100};
+  --button-secondary-border: #{$color-gray-200};
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-geist-sans);
+  background-color: var(--background);
+
+  &__main {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    max-width: 800px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-color: var(--foreground);
+    padding: 120px 60px;
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: $space-5;
+
+    h1 {
+      max-width: 320px;
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 48px;
+      letter-spacing: -2.4px;
+      text-wrap: balance;
+      color: var(--text-primary);
+    }
+
+    p {
+      max-width: 440px;
+      font-size: $size-lg;
+      line-height: 32px;
+      text-wrap: balance;
+      color: var(--text-secondary);
+    }
+
+    a {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+  }
+
+  &__ctas {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 440px;
+    gap: $space-4;
+    font-size: $size-sm;
+  }
+
+  &__cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    padding: 0 $space-4;
+    border-radius: $radius-full;
+    border: 1px solid transparent;
+    transition: 0.2s;
+    cursor: pointer;
+    width: fit-content;
+    font-weight: 500;
+
+    &--primary {
+      background: var(--text-primary);
+      color: var(--background);
+      gap: $space-2;
+
+      @include hover-support {
+        background: var(--button-primary-hover);
+        border-color: transparent;
+      }
+    }
+
+    &--secondary {
+      border-color: var(--button-secondary-border);
+
+      @include hover-support {
+        background: var(--button-secondary-hover);
+        border-color: transparent;
+      }
+    }
+  }
+
+  &__code {
+    font-family: var(--font-geist-mono);
+    font-size: 0.9em;
+    background: color-mix(in srgb, currentColor 8%, transparent);
+    padding: 0.1em 0.4em;
+    border-radius: $radius-md;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --background: #{$color-black};
+    --foreground: #{$color-black};
+
+    --text-primary: #ededed;
+    --text-secondary: #999;
+
+    --button-primary-hover: #{$color-gray-300};
+    --button-secondary-hover: #{$color-gray-900};
+    --button-secondary-border: #{$color-gray-900};
+
+    &__logo {
+      filter: invert(1);
+    }
+  }
+
+  @media (max-width: 600px) {
+    &__main {
+      padding: $space-7 $space-5;
+    }
+
+    &__intro {
+      gap: $space-4;
+
+      h1 {
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: -1.92px;
+      }
+    }
+  }
+}

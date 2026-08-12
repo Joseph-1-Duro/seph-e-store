@@ -1,0 +1,14 @@
+// Site footer.
+// Component: src/ui/layout/Footer.tsx
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.site-footer {
+  padding: $space-7 $space-5;
+  background: $color-gray-900;
+  color: $color-gray-300;
+
+  @include respond-to("md") {
+    padding-inline: $space-6;
+  }
+}

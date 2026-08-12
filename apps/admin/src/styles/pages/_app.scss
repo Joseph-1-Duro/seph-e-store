@@ -1,0 +1,204 @@
+// Admin home — placeholder scaffold (migrated from App.css).
+// Component: src/App.tsx
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.app {
+  &__center {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+    place-content: center;
+    place-items: center;
+    flex-grow: 1;
+
+    @media (max-width: 1024px) {
+      padding: $space-6 $space-4 $space-5;
+      gap: $space-4;
+    }
+  }
+
+  &__hero {
+    position: relative;
+
+    .app__hero-base,
+    .app__hero-framework,
+    .app__hero-vite {
+      inset-inline: 0;
+      margin: 0 auto;
+    }
+
+    .app__hero-base {
+      width: 170px;
+      position: relative;
+      z-index: 0;
+    }
+
+    .app__hero-framework,
+    .app__hero-vite {
+      position: absolute;
+    }
+
+    .app__hero-framework {
+      z-index: 1;
+      top: 34px;
+      height: 28px;
+      transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+        scale(1.4);
+    }
+
+    .app__hero-vite {
+      z-index: 0;
+      top: 107px;
+      height: 26px;
+      width: auto;
+      transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+        scale(0.8);
+    }
+  }
+
+  &__counter {
+    font-family: var(--mono);
+    display: inline-flex;
+    border-radius: $radius-sm;
+    color: var(--text-h);
+    font-size: 16px;
+    padding: $space-1 $space-2;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+    margin-bottom: $space-5;
+
+    @include hover-support {
+      border-color: var(--accent-border);
+    }
+
+    @include focus-ring;
+  }
+
+  &__ticks {
+    position: relative;
+    width: 100%;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: -4.5px;
+      border: 5px solid transparent;
+    }
+
+    &::before {
+      left: 0;
+      border-left-color: var(--border);
+    }
+
+    &::after {
+      right: 0;
+      border-right-color: var(--border);
+    }
+  }
+
+  &__next-steps {
+    display: flex;
+    border-top: 1px solid var(--border);
+    text-align: left;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &__docs,
+  &__social {
+    flex: 1 1 0;
+    padding: $space-6;
+
+    @media (max-width: 1024px) {
+      padding: $space-5 $space-4;
+    }
+  }
+
+  &__docs {
+    border-right: 1px solid var(--border);
+
+    @media (max-width: 1024px) {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+  }
+
+  &__icon {
+    margin-bottom: $space-4;
+    width: 22px;
+    height: 22px;
+  }
+
+  &__social ul,
+  &__docs ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: $space-2;
+    margin: $space-6 0 0;
+
+    @media (max-width: 1024px) {
+      margin-top: $space-4;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__button-icon {
+    height: 18px;
+    width: 18px;
+  }
+
+  &__docs a,
+  &__social a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: $radius-md;
+    background: var(--social-bg);
+    display: flex;
+    padding: $space-1 $space-3;
+    align-items: center;
+    gap: $space-2;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    @include hover-support {
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 1024px) {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+
+  &__docs li,
+  &__social li {
+    @media (max-width: 1024px) {
+      flex: 1 1 calc(50% - 8px);
+    }
+  }
+
+  &__spacer {
+    height: 88px;
+    border-top: 1px solid var(--border);
+
+    @media (max-width: 1024px) {
+      height: 48px;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &__social .app__button-icon {
+      filter: invert(1) brightness(2);
+    }
+  }
+}

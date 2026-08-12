@@ -1,0 +1,23 @@
+// Scroll-to-top — floating button, appears after scrolling.
+// Component: src/ui/components/ScrollToTop.tsx
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.scroll-to-top {
+  @include flex-center;
+  position: fixed;
+  bottom: $space-5;
+  right: $space-5;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-full;
+  background: $color-primary;
+  color: $color-white;
+  z-index: 100;
+
+  @include hover-support {
+    background: $color-primary-dark;
+  }
+
+  @include focus-ring;
+}
