@@ -1,0 +1,59 @@
+// Shared mixins — no CSS output on their own.
+
+@use "sass:map";
+@use "variables" as *;
+
+/// Mobile-first media query helper.
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`. Use `sm`, `md`, `lg` or `xl`.";
+  }
+}
+
+/// Center items horizontally + vertically.
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/// Single-line text truncation.
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/// Apply only on devices that can actually hover.
+@mixin hover-support {
+  @media (pointer: fine) and (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+/// Visually hidden but accessible to screen readers.
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/// Focus ring for interactive elements.
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}

@@ -1,0 +1,53 @@
+// Base typography defaults — migrated from the old index.css.
+@use "../abstracts/variables" as *;
+
+body {
+  font-family: var(--sans);
+  font-size: $size-base;
+  color: var(--text);
+  background: var(--bg);
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: $space-6 0;
+
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: $space-4 0;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 $space-2;
+
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+code {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: $radius-sm;
+  color: var(--text-h);
+  font-size: 15px;
+  line-height: 135%;
+  padding: $space-1 $space-2;
+  background: var(--code-bg);
+}

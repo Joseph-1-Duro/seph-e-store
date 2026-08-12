@@ -1,0 +1,16 @@
+// Main stylesheet — import order: abstracts → base → layout → components → pages.
+
+// Abstracts (no output)
+@use "abstracts/variables";
+@use "abstracts/mixins";
+
+// Base
+@use "base/reset";
+@use "base/typography";
+@use "base/globals";
+
+// Layout
+@use "layout/shell";
+
+// Pages
+@use "pages/app";
