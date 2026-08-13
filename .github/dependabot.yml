@@ -1,13 +1,20 @@
 version: 2
 
 updates:
-  - package-ecosystem: "npm" # Change to "pnpm" or "yarn" if using them
+  # pnpm monorepo — the "npm" ecosystem reads the root pnpm-lock.yaml.
+  # NOTE: Dependabot's pnpm 11 support is still beta; CI (workflows/ci.yml)
+  # is the safety net that blocks broken updates from merging.
+  - package-ecosystem: "npm"
     directory: "/"
-    rebase-strategy: auto
     schedule:
       interval: "weekly"
       day: "monday"
       time: "00:00"
+      timezone: "UTC"
+    rebase-strategy: "auto"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
     commit-message:
       prefix: "chore(deps)"
     groups:
@@ -21,8 +28,44 @@ updates:
         patterns:
           - "next"
           - "@next/*"
-      tooling-linters:
+          - "eslint-config-next"
+      typescript-tooling:
         patterns:
-          - "eslint*"
-          - "prettier*"
+          - "typescript"
+          - "typescript-eslint"
+          - "@types/node"
+          - "@types/babel__core"
+      linters-formatting:
+        patterns:
+          - "eslint"
+          - "eslint-plugin-*"
+          - "@eslint/*"
+          - "prettier"
+          - "globals"
+      build-tooling:
+        patterns:
           - "turbo"
+          - "vite"
+          - "@vitejs/*"
+          - "sass"
+          - "@babel/*"
+          - "@rolldown/*"
+          - "babel-plugin-react-compiler"
+      runtime-deps:
+        patterns:
+          - "lucide-react"
+          - "sonner"
+          - "zustand"
+          - "react-router"
+
+  # Keep the actions used in workflows updated too.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "00:00"
+      timezone: "UTC"
+    labels:
+      - "dependencies"
+      - "github-actions"
